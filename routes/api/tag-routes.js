@@ -7,11 +7,10 @@ router.get('/', (req, res) => {
   // find all tags
   // be sure to include its associated Product data
   Tag.findAll({
-    // attributes: {exclude: ['categoryId']},
     include: [
       {
-        attributes: {exclude: ['categoryId']},
-        model: Product
+        model: Product,
+        attributes: ['product_name']
       }
     ]
   })
@@ -23,8 +22,6 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:id', (req, res) => {
-  // find a single tag by its `id`
-  // be sure to include its associated Product data
   Tag.findOne(
     {
       where: {
@@ -32,8 +29,8 @@ router.get('/:id', (req, res) => {
       },
       include: [
         {    
-          attributes: {exclude: ['categoryId']},
-          model: Product
+          model: Product,        
+          attributes: ['product_name']
         }
       ]
     },

@@ -7,7 +7,7 @@ router.get('/', (req, res) => {
   Category.findAll({
     include: {
       model: Product, 
-      attributes: ['id', 'product_name', 'price', 'stock', 'category_id']
+      attributes: ['id', 'product_name']
     }
   })
   .then(category => res.json(category))
@@ -24,7 +24,7 @@ router.get('/:id', (req, res) => {
     },
     include: {
       model: Product,
-      attributes: ['id', 'product_name', 'price', 'stock', 'category_id']
+      attributes: ['id', 'product_name']
     }
   })
   .then(category => {
